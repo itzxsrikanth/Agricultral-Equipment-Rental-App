@@ -10,53 +10,55 @@
             <div class="card border-0 shadow-sm p-4" style="border-radius: 20px; position: sticky; top: 100px;">
                 <h4 class="fw-bold mb-4"><i class="bi bi-funnel text-primary me-2"></i>Filters</h4>
                 
-                <!-- Search -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Search Name/Model</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
-                        <input type="text" class="form-control border-start-0" placeholder="Tractor, plow...">
+                <form method="GET" action="{{ url_for('equipment.list_equipment') }}">
+                    <!-- Search -->
+                    <div class="mb-4">
+                        <label for="search" class="form-label fw-semibold">Search Name/Model</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+                            <input type="text" id="search" name="search" class="form-control border-start-0" placeholder="Tractor, plow..." value="{{ search }}">
+                        </div>
                     </div>
-                </div>
 
-                <!-- Categories -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Category</label>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="cat-all" checked>
-                        <label class="form-check-label" for="cat-all">All Categories</label>
+                    <!-- Categories -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Category</label>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="category" value="All" id="cat-all" {% if not selected_categories or 'All' in selected_categories %}checked{% endif %}>
+                            <label class="form-check-label" for="cat-all">All Categories</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="category" value="Tractors" id="cat-tractors" {% if 'Tractors' in selected_categories %}checked{% endif %}>
+                            <label class="form-check-label" for="cat-tractors">Tractors</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="category" value="Harvesters" id="cat-harvesters" {% if 'Harvesters' in selected_categories %}checked{% endif %}>
+                            <label class="form-check-label" for="cat-harvesters">Harvesters</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" name="category" value="Irrigation" id="cat-irrigation" {% if 'Irrigation' in selected_categories %}checked{% endif %}>
+                            <label class="form-check-label" for="cat-irrigation">Irrigation</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="category" value="Tools" id="cat-tools" {% if 'Tools' in selected_categories %}checked{% endif %}>
+                            <label class="form-check-label" for="cat-tools">Soil & Seeding Tools</label>
+                        </div>
                     </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="cat-tractors">
-                        <label class="form-check-label" for="cat-tractors">Tractors</label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="cat-harvesters">
-                        <label class="form-check-label" for="cat-harvesters">Harvesters</label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" value="" id="cat-irrigation">
-                        <label class="form-check-label" for="cat-irrigation">Irrigation</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="cat-tools">
-                        <label class="form-check-label" for="cat-tools">Soil & Seeding Tools</label>
-                    </div>
-                </div>
 
-                <!-- Location -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold">Location</label>
-                    <select class="form-select" style="border-radius: 10px;">
-                        <option selected>All Regions</option>
-                        <option>Punjab</option>
-                        <option>Haryana</option>
-                        <option>Maharashtra</option>
-                        <option>Karnataka</option>
-                    </select>
-                </div>
+                    <!-- Location -->
+                    <div class="mb-4">
+                        <label for="location" class="form-label fw-semibold">Location</label>
+                        <select id="location" name="location" class="form-select" style="border-radius: 10px;">
+                            <option value="All Regions" {% if selected_location == 'All Regions' or not selected_location %}selected{% endif %}>All Regions</option>
+                            <option value="Punjab" {% if selected_location == 'Punjab' %}selected{% endif %}>Punjab</option>
+                            <option value="Haryana" {% if selected_location == 'Haryana' %}selected{% endif %}>Haryana</option>
+                            <option value="Maharashtra" {% if selected_location == 'Maharashtra' %}selected{% endif %}>Maharashtra</option>
+                            <option value="Karnataka" {% if selected_location == 'Karnataka' %}selected{% endif %}>Karnataka</option>
+                        </select>
+                    </div>
 
-                <button class="btn btn-primary-custom w-100 py-2">Apply Filters</button>
+                    <button type="submit" class="btn btn-primary-custom w-100 py-2">Apply Filters</button>
+                </form>
             </div>
         </div>
 

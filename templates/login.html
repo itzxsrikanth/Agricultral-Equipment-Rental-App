@@ -12,19 +12,16 @@
                     <h2 class="fw-bold mt-2">Welcome Back</h2>
                     <p class="text-muted">Sign in to manage your rentals and listings</p>
                 </div>
-                <div class="alert alert-info py-2 small text-center" style="border-radius: 8px;">
-                    <i class="bi bi-info-circle-fill me-1"></i> Authentication will be activated in Phase 2!
-                </div>
-                <form>
+                <form method="POST" action="{{ url_for('auth.login') }}">
                     <div class="mb-3">
-                        <label class="form-label">Email Address</label>
-                        <input type="email" class="form-control" placeholder="name@example.com" disabled style="border-radius: 10px;">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required style="border-radius: 10px;">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" placeholder="••••••••" disabled style="border-radius: 10px;">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required style="border-radius: 10px;">
                     </div>
-                    <button type="submit" class="btn btn-primary-custom w-100 py-2 mt-2" disabled>Sign In</button>
+                    <button type="submit" class="btn btn-primary-custom w-100 py-2 mt-2">Sign In</button>
                 </form>
                 <div class="text-center mt-3 small text-muted">
                     Don't have an account? <a href="{{ url_for('auth.register') }}" class="text-primary fw-semibold">Register here</a>

@@ -7,6 +7,7 @@ from models.user import User
 from models.equipment import Equipment
 from routes.auth import auth_bp
 from routes.equipment import equipment_bp
+from routes.booking import booking_bp
 
 def create_app():
     app = Flask(__name__)
@@ -34,6 +35,7 @@ def create_app():
     # Register blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(equipment_bp)
+    app.register_blueprint(booking_bp)
 
     # Register home page route
     @app.route('/')
