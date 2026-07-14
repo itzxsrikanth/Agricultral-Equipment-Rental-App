@@ -53,6 +53,13 @@
                                         {{ booking.status }}
                                     </span>
                                     
+                                    <!-- Download Invoice -->
+                                    {% if booking.status in ['Approved', 'Paid', 'Completed'] %}
+                                        <a href="{{ url_for('booking.download_invoice', booking_id=booking.id) }}" class="btn btn-outline-primary btn-sm w-100 py-1" style="border-radius: 20px; font-size: 0.8rem;">
+                                            <i class="bi bi-file-earmark-pdf-fill me-1"></i>Invoice
+                                        </a>
+                                    {% endif %}
+                                    
                                     <!-- Cancel Request Button -->
                                     {% if booking.status == 'Pending' %}
                                         <form method="POST" action="{{ url_for('booking.cancel_booking', booking_id=booking.id) }}" class="w-100">

@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, abort
+from models import db
 from models.equipment import Equipment
 
 equipment_bp = Blueprint('equipment', __name__)
@@ -43,5 +44,7 @@ def list_equipment():
 
 @equipment_bp.route('/equipment/<int:equipment_id>')
 def equipment_detail(equipment_id):
-    equipment = Equipment.query.get_or_404(equipment_id)
+    equipment = db.session.get(Equipment, equipment_id)
+    if not equipment:
+        abort(404)
     return render_template('equipment_detail.html', equipment=equipment)

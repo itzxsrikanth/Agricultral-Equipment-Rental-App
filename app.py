@@ -8,6 +8,8 @@ from models.equipment import Equipment
 from routes.auth import auth_bp
 from routes.equipment import equipment_bp
 from routes.booking import booking_bp
+from routes.admin import admin_bp
+from routes.profile import profile_bp
 
 def create_app():
     app = Flask(__name__)
@@ -30,12 +32,14 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.query.get(int(user_id))
+        return db.session.get(User, int(user_id))
 
     # Register blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(equipment_bp)
     app.register_blueprint(booking_bp)
+    app.register_blueprint(admin_bp)
+    app.register_blueprint(profile_bp)
 
     # Register home page route
     @app.route('/')
