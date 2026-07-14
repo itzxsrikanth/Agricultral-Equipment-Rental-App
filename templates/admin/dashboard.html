@@ -68,7 +68,7 @@
                     <div class="stat-icon bg-info-subtle text-info"><i class="bi bi-currency-dollar"></i></div>
                     <div>
                         <div class="text-muted small">Total Revenue</div>
-                        <h3 class="fw-bold mb-0">${{ "%.2f"|format(total_revenue) }}</h3>
+                        <h3 class="fw-bold mb-0">₹{{ "%.2f"|format(total_revenue) }}</h3>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                         <td><span class="fw-semibold">{{ b.user.name }}</span><br><span class="text-muted small">{{ b.user.email }}</span></td>
                         <td>{{ b.equipment.name }}</td>
                         <td class="small text-muted">{{ b.start_date.strftime('%d %b') }} — {{ b.end_date.strftime('%d %b %Y') }}</td>
-                        <td class="fw-semibold">${{ "%.2f"|format(b.total_price) }}</td>
+                        <td class="fw-semibold">₹{{ "%.2f"|format(b.total_price) }}</td>
                         <td>
                             <span class="status-pill
                                 {% if b.status == 'Pending' %}bg-warning-subtle text-warning

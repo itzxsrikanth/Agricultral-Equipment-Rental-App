@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title %}List New Machinery - AgriRent{% endblock %}
+
+{% block content %}
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center pt-4">
+        <div class="col-lg-8">
+            <div class="d-flex align-items-center mb-4">
+                <a href="{{ url_for('owner.dashboard') }}" class="btn btn-outline-secondary btn-sm me-3" style="border-radius:20px;">
+                    <i class="bi bi-arrow-left me-1"></i>Back
+                </a>
+                <h3 class="fw-bold mb-0">List New Machinery</h3>
+            </div>
+
+            <div class="card border-0 shadow-sm p-5" style="border-radius:24px;">
+                <form method="POST" action="{{ url_for('owner.add_equipment') }}" enctype="multipart/form-data">
+                    <div class="row g-4">
+                        <div class="col-md-12">
+                            <label for="name" class="form-label fw-semibold">Equipment Name</label>
+                            <input type="text" id="name" name="name" class="form-control form-control-lg" placeholder="e.g. John Deere 5050D Tractor" required style="border-radius:12px;">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="category" class="form-label fw-semibold">Category</label>
+                            <select id="category" name="category" class="form-select form-select-lg" required style="border-radius:12px;">
+                                <option value="" disabled selected>Select Category...</option>
+                                <option value="Tractors">Tractors</option>
+                                <option value="Harvesters">Harvesters</option>
+                                <option value="Irrigation">Irrigation</option>
+                                <option value="Tools">Tools</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="location" class="form-label fw-semibold">Location (Region)</label>
+                            <select id="location" name="location" class="form-select form-select-lg" required style="border-radius:12px;">
+                                <option value="" disabled selected>Select Region...</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Karnataka">Karnataka</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="price_per_day" class="form-label fw-semibold">Price Per Day (₹)</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-light text-muted border-end-0" style="border-top-left-radius:12px; border-bottom-left-radius:12px;">₹</span>
+                                <input type="number" step="0.01" min="1" id="price_per_day" name="price_per_day" class="form-control border-start-0" placeholder="0.00" required style="border-top-right-radius:12px; border-bottom-right-radius:12px;">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="image" class="form-label fw-semibold">Equipment Image</label>
+                            <input class="form-control form-control-lg" type="file" id="image" name="image" accept="image/*" style="border-radius:12px;">
+                            <div class="form-text mt-2">Upload a clear photo of the machinery. (Optional)</div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="description" class="form-label fw-semibold">Description</label>
+                            <textarea id="description" name="description" class="form-control" rows="4" placeholder="Describe the machinery, its condition, and any specific requirements..." required style="border-radius:12px;"></textarea>
+                        </div>
+                    </div>
+
+                    <hr class="my-5 text-muted opacity-25">
+
+                    <button type="submit" class="btn btn-primary-custom w-100 py-3 mb-2" style="font-size:1.1rem;">
+                        <i class="bi bi-cloud-arrow-up-fill me-2"></i>Publish Listing
+                    </button>
+                    <p class="text-center text-muted small">Your machinery will be available for rent immediately after publishing.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

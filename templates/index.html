@@ -17,9 +17,11 @@
                     <a href="{{ url_for('equipment.list_equipment') }}" class="btn btn-accent-custom btn-lg px-4 py-3">
                         <i class="bi bi-search me-2"></i> Rent Equipment
                     </a>
-                    <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light btn-lg px-4 py-3" style="border-radius: 30px; font-weight: 600;">
+                    {% if not current_user.is_authenticated or current_user.role == 'owner' %}
+                    <a href="{{ url_for('owner.add_equipment') if current_user.is_authenticated and current_user.role == 'owner' else url_for('auth.register') }}" class="btn btn-outline-light btn-lg px-4 py-3" style="border-radius: 30px; font-weight: 600;">
                         <i class="bi bi-plus-circle me-2"></i> List Your Machinery
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>

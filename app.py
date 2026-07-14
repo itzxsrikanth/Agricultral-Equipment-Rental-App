@@ -10,6 +10,7 @@ from routes.equipment import equipment_bp
 from routes.booking import booking_bp
 from routes.admin import admin_bp
 from routes.profile import profile_bp
+from routes.owner import owner_bp
 
 def create_app():
     app = Flask(__name__)
@@ -40,6 +41,7 @@ def create_app():
     app.register_blueprint(booking_bp)
     app.register_blueprint(admin_bp)
     app.register_blueprint(profile_bp)
+    app.register_blueprint(owner_bp)
 
     # Register home page route
     @app.route('/')

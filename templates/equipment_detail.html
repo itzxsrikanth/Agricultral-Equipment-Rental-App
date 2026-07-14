@@ -48,7 +48,7 @@
                         <div class="col-sm-6">
                             <div class="p-3 bg-light rounded-3 d-flex align-items-center justify-content-between">
                                 <span class="text-muted">Price Per Day</span>
-                                <span class="fw-semibold text-primary">${{ "%.2f"|format(equipment.price_per_day) }}</span>
+                                <span class="fw-semibold text-primary">₹{{ "%.2f"|format(equipment.price_per_day) }}</span>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
             <div class="card border-0 shadow-sm p-4 sticky-top" style="border-radius: 20px; top: 100px; z-index: 10;">
                 <h4 class="fw-bold mb-3">Rental Details</h4>
                 <div class="d-flex align-items-baseline mb-4">
-                    <span class="display-6 fw-bold text-primary">${{ "%.2f"|format(equipment.price_per_day) }}</span>
+                    <span class="display-6 fw-bold text-primary">₹{{ "%.2f"|format(equipment.price_per_day) }}</span>
                     <span class="text-muted ms-1">/day</span>
                 </div>
                 
@@ -89,16 +89,16 @@
                     <div class="bg-light p-3 rounded-3 mb-4">
                         <div class="d-flex justify-content-between small text-muted mb-2">
                             <span>Daily rental (<span id="days_text">1 day</span>)</span>
-                            <span id="base_rental_cost">${{ "%.2f"|format(equipment.price_per_day) }}</span>
+                            <span id="base_rental_cost">₹{{ "%.2f"|format(equipment.price_per_day) }}</span>
                         </div>
                         <div class="d-flex justify-content-between small text-muted mb-2">
                             <span>Service tax (5%)</span>
-                            <span>$0.00</span>
+                            <span>₹0.00</span>
                         </div>
                         <hr class="my-2">
                         <div class="d-flex justify-content-between fw-bold">
                             <span>Estimated Total</span>
-                            <span id="estimated_total" class="text-primary">${{ "%.2f"|format(equipment.price_per_day) }}</span>
+                            <span id="estimated_total" class="text-primary">₹{{ "%.2f"|format(equipment.price_per_day) }}</span>
                         </div>
                     </div>
                     
@@ -139,12 +139,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 const baseCost = diffDays * dailyPrice;
                 
                 daysText.innerText = `${diffDays} day${diffDays > 1 ? 's' : ''}`;
-                baseCostEl.innerText = `$${baseCost.toFixed(2)}`;
-                estimatedTotalEl.innerText = `$${baseCost.toFixed(2)}`;
+                baseCostEl.innerText = `₹${baseCost.toFixed(2)}`;
+                estimatedTotalEl.innerText = `₹${baseCost.toFixed(2)}`;
             } else {
                 daysText.innerText = "0 days";
-                baseCostEl.innerText = "$0.00";
-                estimatedTotalEl.innerText = "$0.00";
+                baseCostEl.innerText = "₹0.00";
+                estimatedTotalEl.innerText = "₹0.00";
             }
         }
     }

@@ -164,8 +164,8 @@ def download_invoice(booking_id):
             booking.start_date.strftime('%d %b %Y'),
             booking.end_date.strftime('%d %b %Y'),
             str(max((booking.end_date - booking.start_date).days, 1)),
-            f'${booking.equipment.price_per_day:.2f}',
-            f'${booking.total_price:.2f}',
+            f'₹{booking.equipment.price_per_day:.2f}',
+            f'₹{booking.total_price:.2f}',
         ],
     ]
     rental_table = Table(rental_data, colWidths=[110, 70, 60, 65, 65, 35, 55, 60])
@@ -185,7 +185,7 @@ def download_invoice(booking_id):
     elements.append(Spacer(1, 20))
 
     # Total amount
-    total_data = [['', '', '', '', '', '', 'Grand Total:', f'${booking.total_price:.2f}']]
+    total_data = [['', '', '', '', '', '', 'Grand Total:', f'₹{booking.total_price:.2f}']]
     total_table = Table(total_data, colWidths=[110, 70, 60, 65, 65, 35, 55, 60])
     total_table.setStyle(TableStyle([
         ('FONTNAME',   (6, 0), (-1, -1), 'Helvetica-Bold'),

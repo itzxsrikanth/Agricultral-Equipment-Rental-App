@@ -57,6 +57,13 @@
                                 </a>
                             </li>
                             <li><hr class="dropdown-divider"></li>
+                            {% elif current_user.role == 'owner' %}
+                            <li>
+                                <a class="dropdown-item py-2 px-3 d-flex align-items-center gap-2" href="{{ url_for('owner.dashboard') }}">
+                                    <i class="bi bi-briefcase-fill text-muted"></i> Owner Dashboard
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
                             {% endif %}
                             <li>
                                 <a class="dropdown-item py-2 px-3 d-flex align-items-center gap-2 text-danger" href="{{ url_for('auth.logout') }}">

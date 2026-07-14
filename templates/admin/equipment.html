@@ -36,7 +36,7 @@
                             <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">{{ eq.category }}</span>
                         </td>
                         <td class="text-muted small"><i class="bi bi-geo-alt-fill me-1"></i>{{ eq.location }}</td>
-                        <td class="fw-semibold text-primary">${{ "%.2f"|format(eq.price_per_day) }}</td>
+                        <td class="fw-semibold text-primary">₹{{ "%.2f"|format(eq.price_per_day) }}</td>
                         <td class="small text-muted">{{ eq.owner.name }}</td>
                         <td>
                             {% if eq.availability %}

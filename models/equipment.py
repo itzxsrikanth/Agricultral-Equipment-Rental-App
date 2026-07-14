@@ -21,4 +21,4 @@ class Equipment(db.Model):
     bookings = db.relationship('Booking', backref='equipment', lazy=True)
     
     def __repr__(self):
-        return f"<Equipment {self.name} - ${self.price_per_day}/day>"
+        return f"<Equipment {self.name} - ₹{self.price_per_day}/day>"

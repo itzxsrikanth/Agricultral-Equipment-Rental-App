@@ -100,7 +100,7 @@
                                     <hr class="text-muted my-3 opacity-25">
                                     <div class="d-flex justify-content-between align-items-center mt-auto">
                                         <div>
-                                            <span class="h4 fw-bold text-primary mb-0">${{ "%.2f"|format(item.price_per_day) }}</span>
+                                            <span class="h4 fw-bold text-primary mb-0">₹{{ "%.2f"|format(item.price_per_day) }}</span>
                                             <span class="text-muted small">/day</span>
                                         </div>
                                         <a href="{{ url_for('equipment.equipment_detail', equipment_id=item.id) }}" class="btn btn-outline-success btn-sm px-3" style="border-radius: 20px;">
