@@ -159,5 +159,31 @@ def seed_data():
 app = create_app()
 
 if __name__ == '__main__':
-    # Run the application locally
-    app.run(debug=True)
+    # Detect if running under Streamlit
+    import sys
+    is_streamlit = 'streamlit' in sys.modules or any('streamlit' in arg for arg in sys.argv)
+    
+    if is_streamlit:
+        try:
+            import streamlit as st
+            st.set_page_config(page_title="AgriRent System - Deployment Notice", page_icon="🚜")
+            st.error("### 🚜 Agricultural Equipment Rental System")
+            st.warning(
+                "It looks like you are trying to deploy a **Flask** application on **Streamlit Cloud**.\n\n"
+                "Streamlit Cloud is designed exclusively for hosting Streamlit applications and "
+                "cannot host standard Flask web servers directly.\n\n"
+                "**Recommended Action:**\n"
+                "Please deploy this repository to a Flask-compatible hosting platform such as "
+                "[Render](https://render.com/), [Railway](https://railway.app/), or [PythonAnywhere](https://www.pythonanywhere.com/).\n\n"
+                "To get started with Render:\n"
+                "1. Create a free account at [render.com](https://render.com/).\n"
+                "2. Connect your GitHub repository.\n"
+                "3. Choose **Web Service**.\n"
+                "4. Set the runtime to **Python**.\n"
+                "5. Set the Start Command to **gunicorn app:app**."
+            )
+        except ImportError:
+            print("Streamlit environment detected but streamlit module is not available.")
+    else:
+        # Run the application locally
+        app.run(debug=True)
