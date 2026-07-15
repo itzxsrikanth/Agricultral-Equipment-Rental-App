@@ -1,6 +1,8 @@
 # AgriRent 🌾
 > A Premium, Modern Agricultural Equipment Rental Platform
 
+[![Deploy to Render](https://render.com/images/deploy-to-render.button.svg)](https://render.com/deploy?repo=https://github.com/itzxsrikanth/Agricultral-Equipment-Rental-App)
+
 AgriRent is a professional Flask web application designed for hackathons. It bridges the gap between machinery owners (lenders) and farmers (renters), enabling them to rent out or request agricultural equipment like tractors, combine harvesters, irrigation systems, and soil cultivators.
 
 ---
